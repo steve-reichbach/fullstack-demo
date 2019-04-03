@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const keywords = require('../controllers/keywords.controller');
+const repo = require('../controllers/crud.controller');
+const keywords = new repo('KeywordLists');
 
-router.get('/all', (req, res) => keywords.getAll().then(data => res.json(data)));
+router.get('/', (req, res) => keywords.getAll().then(data => res.json(data)));
 
-router.post('/create', (req, res) => keywords.addOne(req.body.keyword).then(data => res.json(data)));
+router.post('/', (req, res) => keywords.addOne(req.body.keyword).then(data => res.json(data)));
 
 router.put('/update/:id', (req, res) => keywords.updateOne(req.params.id, req.body.keyword).then(data => res.json(data)));
 

@@ -10,7 +10,7 @@ class EntityRepository {
         }
     }
     getAll() {
-        return this.knex(collectionName)
+        return this.knex(this.collectionName)
             .orderBy('id', 'asc')
             .map(row => knex.normalizeOutput(row))
             .catch(this.errorCatcher);
@@ -43,8 +43,4 @@ class EntityRepository {
     }
 }
 
-class VastsRespository implements EntityRepository('Vasts') {}
-class KeywordsListRepository implements EntityRepository('KeywordLists') {}
-
-export default VastsRespository;
-export default KeywordsListRepository;
+module.exports = EntityRepository;

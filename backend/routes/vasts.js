@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const vasts = require('../controllers/vasts.controller');
+const repo = require('../controllers/crud.controller');
+const vasts = new repo('Vasts');
 
-router.get('/all', (req, res) => vasts.getAll().then(data => res.json(data)));
+router.get('/', (req, res) => vasts.getAll().then(data => res.json(data)));
 
-router.post('/create', (req, res) => vasts.addOne(req.body.vast).then(data => res.json(data)));
+router.post('/', (req, res) => vasts.addOne(req.body.vast).then(data => res.json(data)));
 
 router.put('/update/:id', (req, res) => vasts.updateOne(req.params.id, req.body.vast).then(data => res.json(data)));
 
