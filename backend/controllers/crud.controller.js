@@ -43,4 +43,5 @@ class EntityRepository {
     }
 }
 
-module.exports = EntityRepository;
+module.exports.KeywordLists = new EntityRepository('KeywordLists');
+module.exports.Vasts = new EntityRepository('Vasts');

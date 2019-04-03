@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const repo = require('../controllers/crud.controller');
-const keywords = new repo('KeywordLists');
+const keywords = require('../controllers/crud.controller').KeywordLists;
 
 router.get('/', (req, res) => keywords.getAll().then(data => res.json(data)));
 

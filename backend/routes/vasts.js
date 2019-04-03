@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const repo = require('../controllers/crud.controller');
-const vasts = new repo('Vasts');
+const vasts = require('../controllers/crud.controller').Vasts;
 
 router.get('/', (req, res) => vasts.getAll().then(data => res.json(data)));
 

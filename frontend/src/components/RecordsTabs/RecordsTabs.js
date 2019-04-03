@@ -11,7 +11,7 @@ const tabsStyles = {
     },
 };
 
-class VastTabs extends React.Component {
+class RecordsTabs extends React.Component {
     state = {
         value: 0,
     };
@@ -39,8 +39,8 @@ class VastTabs extends React.Component {
     }
 }
 
-VastTabs.propTypes = {
+RecordsTabs.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(tabsStyles)(VastTabs);
+export default withStyles(tabsStyles)(RecordsTabs);
