@@ -8,11 +8,7 @@ const RecordsTable = props => (
                 <th/>
                 { Object.entries(props.records[0]).map(value => (<th key={value[0]}> { value[0] } </th>)) }
             </tr>
-        ) : (
-            <tr>
-                <td>No records</td>
-            </tr>
-        )}
+        ) : (<tr><td>No records</td></tr>)}
         </thead>
         <tbody>
         { props.records.length > 0 ? (
@@ -20,9 +16,7 @@ const RecordsTable = props => (
                 <tr key={record.id}>
                     <td>
                         <button
-                            onClick={() => {
-                                props.onEditOne(record)
-                            }}
+                            onClick={() => props.onEditOne(record.id)}
                             className="">
                             Edit
                         </button>
