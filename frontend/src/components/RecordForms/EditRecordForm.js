@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 const EditRecordForm = props => {
-    const [ record, setRecord ] = useState(props.currentRecord)
+    const [record, setRecord] = useState(props.record);
 
-    useEffect(
-        () => {
-            setRecord(props.currentRecord)
-        },
-        [ props ]
-    );
+    // useEffect(
+    //     () => {
+    //         setRecord(props.record)
+    //     },
+    // [ props ]);
     // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
     const handleInputChange = event => {
@@ -38,7 +37,7 @@ const EditRecordForm = props => {
                 ))
             }
             <button>Update record</button>
-            <button type="submit" onClick={() => props.setEditing(false)} className="">
+            <button type="submit" onClick={() => props.onSetMode('')} className="">
                 Cancel
             </button>
         </form>

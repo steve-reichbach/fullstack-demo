@@ -1,40 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RecordsTable from './components/RecordsTable/RecordsTable';
 import EditRecordsForm from './components/RecordForms/EditRecordForm';
 import AddRecordForm from './components/RecordForms/AddRecordForm';
 
-import useFetch from "./actions/";
-
 export default function App() {
-    // const recordsData = await fetch('http://localhost:3001/api/vests').then(data => data.json());
-    // debugger;
-    // const initialFormState = { id: null, name: '', username: '' };
-    // console.log("recordsData", recordsData);
-    // Setting state
-    const collection = 'Vasts';
-    const recordsData = useFetch(`http://localhost:3001/api/${collection}`);
-    const [records, setRecords] = useState(recordsData);
-    // const [initialRecord, setInitialRecord] = useState(recordsData);
-    const [currentRecord, setCurrentRecord] = useState(recordsData[0]);
-    const [editingMode, setEditing] = useState(false);
+    const [records, setRecords] = useState([]);
+    const [collection, setCollection] = useState('vasts');
+    const [currentRecord, setCurrentRecord] = useState({});
+    const [mode, setMode] = useState();
 
-
-    const addRecord = record => {
-        setRecords([...records, record])
-    };
+    useEffect(() => {
+        fetch(`http://localhost:3001/api/${collection}`)
+            .then(data => data.json())
+            .then(json => {
+                setRecords(json)
+                setCurrentRecord(json[0])
+            });
+    }, [collection]);
 
     const deleteRecord = id => {
-        setEditing(false);
+        setMode('');
+        fetch(`http://localhost:3001/api/${collection}/delete/${id}`, { method: 'DELETE' })
+            .then(() => setRecords(records.filter(row => row.id !== id)))
+        ;
+    };
 
-        setRecords(records.filter(row => row.id !== id));
+    const editRecord = id => {
+        setMode('editing');
+        /*
+        fetch(`http://localhost:3001/api/${collection}/delete/${id}`, { method: 'DELETE' })
+            .then(() => setRecords(records.filter(row => row.id !== id)))
+        ;
+        */
     };
 
     const updateRecord = (id, updatedRecord) => {
-        setEditing(false);
+        setMode('');
 
         console.log("updateRecord", id, updatedRecord);
 
         setRecords(records.map(row => (row.id === id ? updatedRecord : row)))
+    };
+
+    /*
+    const addRecord = record => {
+        setRecords([...records, record])
     };
 
     const editRecord = row => {
@@ -44,37 +54,31 @@ export default function App() {
         setCurrentRecord({...row})
     };
 
-    const chooseTable = collection => {
-
-    };
-
+    */
     return (
-        <div className="container">
-            <div className="flex-row">
-                <div className="flex-large">
-                    <button onClick={chooseTable('vasts')}>Vasts</button>
-                    <button onClick={chooseTable('keywords')}>Keywords list</button>
-                    { editingMode ? (
-                        <section>
-                            <h2>Edit a record</h2>
-                            <EditRecordsForm
-                                setEditing={setEditing}
-                                currentRecord={currentRecord}
-                                updateRecord={updateRecord}
-                            />
-                        </section>
-                    ) : (
-                        <section>
-                            <h2>Add a record</h2>
-                            <AddRecordForm sampleRecord={currentRecord} addRecord={addRecord}/>
-                        </section>
-                    )}
-                </div>
-                <div className="flex-large">
-                    <h2>Records list</h2>
-                    <RecordsTable records={recordsData} editRecord={editRecord} deleteRecord={deleteRecord}/>
-                </div>
+        <section className="">
+            <div className="">
+                <button onClick={() => setMode(mode === 'creating' ? '' : 'creating') }>Add</button>
+                <br/>
+                <button onClick={() => setCollection('vasts')}>Vasts</button>
+                <button onClick={() => setCollection('keywords')}>Keywords list</button>
+                { mode === 'editing' && (
+                    <section>
+                        <h2>Edit a record</h2>
+                        <EditRecordsForm record={currentRecord} onSetMode={setMode} onUpdateRecord={updateRecord}/>
+                    </section>
+                ) }
+                { mode === 'creating' && (
+                    <section>
+                        <h2>Add a record</h2>
+                        <AddRecordForm/>
+                    </section>
+                )}
             </div>
-        </div>
+            <div className="">
+                <h2>Records list</h2>
+                <RecordsTable records={records} onDeleteOne={deleteRecord} onEditOne={editRecord}/>
+            </div>
+        </section>
     );
 };

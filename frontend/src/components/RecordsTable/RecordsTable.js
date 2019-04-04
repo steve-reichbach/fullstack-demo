@@ -3,12 +3,10 @@ import React from 'react'
 const RecordsTable = props => (
     <table>
         <thead>
-        {props.records.length > 0 && props.records[0] ? (
+        { props.records.length > 0 && props.records[0] ? (
             <tr>
-                <th></th>
-                {
-                    Object.entries(props.records[0]).map(value => (<th key={value[0]}> { value[0] } </th>))
-                }
+                <th/>
+                { Object.entries(props.records[0]).map(value => (<th key={value[0]}> { value[0] } </th>)) }
             </tr>
         ) : (
             <tr>
@@ -17,28 +15,26 @@ const RecordsTable = props => (
         )}
         </thead>
         <tbody>
-        {props.records.length > 0 ? (
+        { props.records.length > 0 ? (
             props.records.map(record => (
                 <tr key={record.id}>
                     <td>
                         <button
                             onClick={() => {
-                                props.editRecord(record)
+                                props.onEditOne(record)
                             }}
                             className="">
                             Edit
                         </button>
                         <button
-                            onClick={() => props.deleteRecord(record.id)}
+                            onClick={() => props.onDeleteOne(record.id)}
                             className="">
                             Delete
                         </button>
                     </td>
-                    {
-                        Object.values(record).map((value, i) => (
+                    { Object.values(record).map((value, i) => (
                             <td key={i}> { value } </td>
-                        ))
-                    }
+                    ))}
                 </tr>
             ))
         ) : (
