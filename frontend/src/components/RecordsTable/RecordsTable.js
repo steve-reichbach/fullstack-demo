@@ -3,34 +3,42 @@ import React from 'react'
 const RecordsTable = props => (
     <table>
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Actions</th>
-        </tr>
+        {props.records.length > 0 && props.records[0] ? (
+            <tr>
+                <th></th>
+                {
+                    Object.entries(props.records[0]).map(value => (<th key={value[0]}> { value[0] } </th>))
+                }
+            </tr>
+        ) : (
+            <tr>
+                <td>No records</td>
+            </tr>
+        )}
         </thead>
         <tbody>
         {props.records.length > 0 ? (
             props.records.map(record => (
                 <tr key={record.id}>
-                    <td>{record.name}</td>
-                    <td>{record.username}</td>
                     <td>
                         <button
                             onClick={() => {
                                 props.editRecord(record)
                             }}
-                            className="button muted-button"
-                        >
+                            className="">
                             Edit
                         </button>
                         <button
                             onClick={() => props.deleteRecord(record.id)}
-                            className="button muted-button"
-                        >
+                            className="">
                             Delete
                         </button>
                     </td>
+                    {
+                        Object.values(record).map((value, i) => (
+                            <td key={i}> { value } </td>
+                        ))
+                    }
                 </tr>
             ))
         ) : (

@@ -13,28 +13,36 @@ const EditRecordForm = props => {
 
     const handleInputChange = event => {
         const { name, value } = event.target;
-
+        // console.log(name, value);
         setRecord({ ...record, [name]: value })
     };
 
     return (
         <form
             onSubmit={event => {
-                event.preventDefault()
+                event.preventDefault();
 
-                props.updateRecord(record.id, record)
+                props.updateRecord(record.id, record);
             }}
         >
-            <label>Name</label>
-            <input type="text" name="name" value={record.name} onChange={handleInputChange} />
-            <label>Username</label>
-            <input type="text" name="username" value={record.username} onChange={handleInputChange} />
-            <button>Update user</button>
-            <button onClick={() => props.setEditing(false)} className="button muted-button">
+            {
+                Object.entries(record).map(value => (
+                    <div key={value[0]}>
+                        <label>{value[0]}</label>
+                        <input
+                            name={value[0]}
+                            value={value[1]}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                ))
+            }
+            <button>Update record</button>
+            <button type="submit" onClick={() => props.setEditing(false)} className="">
                 Cancel
             </button>
         </form>
     )
-}
+};
 
 export default EditRecordForm

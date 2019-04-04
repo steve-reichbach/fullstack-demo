@@ -1,22 +1,17 @@
-export const addRecord = user => {
-    user.id = users.length + 1
-    setUsers([...users, user])
-};
+import { useState, useEffect } from "react";
 
-export const deleteRecord = id => {
-    setEditing(false);
+export default function useFetch(url) {
+    const [data, setData] = useState([]);
 
-    setUsers(users.filter(user => user.id !== id))
-};
+    async function getData() {
+        const response = await fetch(url);
+        const data = await response.json();
+        setData(data);
+    }
 
-export const updateRecord = (id, updatedUser) => {
-    setEditing(false);
+    useEffect(() => {
+        getData();
+    }, []);
 
-    setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-};
-
-export const editRecord = user => {
-    setEditing(true);
-
-    setCurrentUser({id: user.id, name: user.name, username: user.username})
-};
+    return data;
+}

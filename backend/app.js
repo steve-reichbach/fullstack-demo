@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const CORS = require('./middlewares/CORS');
 const indexRouter = require('./routes/index');
 const apiRouterVasts = require('./routes/vasts');
 const apiRouterKeywords = require('./routes/keywords');
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(CORS);
 app.use('/', indexRouter);
 app.use('/api/vasts', apiRouterVasts);
 app.use('/api/keywords', apiRouterKeywords);
