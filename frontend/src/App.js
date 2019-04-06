@@ -73,7 +73,9 @@ export default function App() {
     return (
         <section className="">
             <div className="">
-                <button onClick={() => setMode(mode === 'creating' ? '' : 'creating') }>+</button>
+                <button onClick={() => setMode(mode === 'creating' ? '' : 'creating') }>
+                    { mode === 'creating' ? '-' : '+' }
+                </button>
                 <br/>
                 <button onClick={() => setCollection('vasts')}>Vasts</button>
                 <button onClick={() => setCollection('keywords')}>Keywords list</button>
@@ -99,7 +101,7 @@ export default function App() {
             </div>
             <div className="">
                 <h2>«{collection}»:</h2>
-                <RecordsTable records={records} onDeleteOne={deleteRecord} onEditOne={editRecord}/>
+                <RecordsTable records={records} onDeleteRecord={deleteRecord} onEditRecord={editRecord}/>
             </div>
         </section>
     );

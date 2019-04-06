@@ -16,12 +16,12 @@ const RecordsTable = props => (
                 <tr key={record.id}>
                     <td>
                         <button
-                            onClick={() => props.onEditOne(record.id)}
+                            onClick={() => props.onEditRecord(record.id)}
                             className="">
                             Edit
                         </button>
                         <button
-                            onClick={() => props.onDeleteOne(record.id)}
+                            onClick={() => props.onDeleteRecord(record.id)}
                             className="">
                             Delete
                         </button>
