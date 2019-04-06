@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import RecordsTable from './components/RecordsTable/RecordsTable';
 import EditRecordsForm from './components/RecordForms/EditRecordForm';
 import AddRecordForm from './components/RecordForms/AddRecordForm';
+import AddRecordFormButton from './components/AddRecordFormButton/AddRecordFormButton';
+import RecordsTabs from "./components/RecordsTabs/RecordsTabs";
 
 export default function App() {
     const [records, setRecords] = useState([]);
@@ -73,12 +75,9 @@ export default function App() {
     return (
         <section className="">
             <div className="">
-                <button onClick={() => setMode(mode === 'creating' ? '' : 'creating') }>
-                    { mode === 'creating' ? '-' : '+' }
-                </button>
+                <AddRecordFormButton/>
                 <br/>
-                <button onClick={() => setCollection('vasts')}>Vasts</button>
-                <button onClick={() => setCollection('keywords')}>Keywords list</button>
+                <RecordsTabs/>
                 { mode === 'editing' && (
                     <section>
                         <h2>Edit a record</h2>

@@ -1,46 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-const tabsStyles = {
-    root: {
-        flexGrow: 1,
-    },
-};
+import { connect } from 'react-redux';
+import { setCollection } from '../../redux/actions';
+import { collectionsList } from '../../api';
 
 class RecordsTabs extends React.Component {
-    state = {
-        value: 0,
-    };
-
-    handleChange = (event, value) => {
-        this.setState({ value });
+    constructor(props) {
+        super(props);
+        this.value = 0;
+        this.setCollection = this.setCollection.bind(this);
+    }
+    setCollection = (event, index) => {
+        this.props.onSelectCollection(collectionsList[index]);
+        this.value = index;
     };
 
     render() {
-        const { classes } = this.props;
-
         return (
-            <Paper className={classes.root}>
+            <Paper>
                 <Tabs
-                    value={this.state.value}
-                    onChange={this.handleChange}
+                    value={this.value}
+                    onChange={this.setCollection}
                     indicatorColor="primary"
                     textColor="primary"
                 >
                     <Tab label="Vasts" />
-                    <Tab label="Keywords" />
+                    <Tab label="Keywords list" />
                 </Tabs>
             </Paper>
         );
     }
 }
 
-RecordsTabs.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = state => ({
+    collection: state.collection
+});
 
-export default withStyles(tabsStyles)(RecordsTabs);
+const mapDispatchToProps = dispatch => ({
+    onSelectCollection: name => dispatch(setCollection(name)),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RecordsTabs)
