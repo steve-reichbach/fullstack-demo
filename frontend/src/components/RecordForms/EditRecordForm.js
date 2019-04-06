@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { excludedForEditingFields } from '../../api'
 
 const EditRecordForm = props => {
     const [record, setRecord] = useState(props.record);
@@ -7,13 +8,13 @@ const EditRecordForm = props => {
         const { name, value } = event.target;
         setRecord({ ...record, [name]: value })
     };
-    const disableForEditingFields = ['id', 'date_created'];
+
     return (
         <form
             onSubmit={e => { e.preventDefault(); props.onUpdateRecord(record.id, record);}}>
             {
                 Object.entries(record).map(value => {
-                    if (disableForEditingFields.includes(value[0])) { return null }
+                    if (excludedForEditingFields.includes(value[0])) { return null }
                     return (<div key={value[0]}>
                             <label>{value[0]}</label>
                             <input

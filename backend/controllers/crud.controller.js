@@ -22,6 +22,7 @@ class EntityRepository {
         delete entity.id;
         return this.knex
             .insert({...entity})
+            .returning('id')
             .into(this.collectionName)
             .catch(this.errorCatcher);
     }

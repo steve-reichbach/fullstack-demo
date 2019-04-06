@@ -1,32 +1,41 @@
-import React, { useState } from 'react'
+import React  from 'react'
+import { excludedForEditingFields } from '../../api'
 
 const AddRecordForm = props => {
-    const initialFormState = { id: null, name: '', username: '' };
-    const [ record, setRecord ] = useState(initialFormState);
-
+    const initialFormState = {...props.model};
+    const recordToSave = {};
     const handleInputChange = event => {
         const { name, value } = event.target;
 
-        setRecord({ ...record, [name]: value });
+        recordToSave[name] = value;
     };
 
     return (
         <form
-            onSubmit={event => {
+            onSubmit={ (event) => {
                 event.preventDefault();
-                if (!record.name || !record.username) return
+                if (!Object.keys(recordToSave).length) { return }
 
-                props.addRecord(record);
-                setRecord(initialFormState)
-            }}
-        >
-            <label>Name</label>
-            <input type="text" name="name" value={record.name} onChange={handleInputChange} />
-            <label>Username</label>
-            <input type="text" name="username" value={record.username} onChange={handleInputChange} />
+                props.onAddRecord(recordToSave);
+            } }>
+            {
+                Object.entries(initialFormState).map(value => {
+                    if (excludedForEditingFields.includes(value[0])) { return null }
+                    return (
+                        <div key={ value[0] }>
+                            <label>{ value[0] }</label>
+                            <input
+                                name={ value[0] }
+                                placeholder={ value[1] }
+                                onChange={ handleInputChange }
+                            />
+                        </div>
+                    );
+                })
+            }
             <button>Add new record</button>
         </form>
-    )
-}
+    );
+};
 
 export default AddRecordForm

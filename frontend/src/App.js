@@ -13,7 +13,7 @@ export default function App() {
         fetch(`http://localhost:3001/api/${collection}`)
             .then(data => data.json())
             .then(json => {
-                setRecords(json)
+                setRecords(json);
                 setCurrentRecord(json[0])
             });
     }, [collection]);
@@ -38,7 +38,7 @@ export default function App() {
     const updateRecord = (id, updatedRecord) => {
         setMode('');
 
-        let query = {...updatedRecord};
+        let query = { ...updatedRecord };
         delete query['date_created']; // TODO: nee a date_created format fix
 
         fetch(`http://localhost:3001/api/${collection}/update/${id}`,
@@ -53,16 +53,22 @@ export default function App() {
                 } else {
                     console.log(res);
                 }
-            })
-
+            });
     };
 
     const addRecord = record => {
-        console.log("addRecord", record);
-        /*
-        fetch(`http://localhost:3001/api/${collection}/`, { method: 'POST' })
-        */
-        //setRecords([...records, record])
+        fetch(`http://localhost:3001/api/${collection}/`,
+            {
+                method: 'POST',
+                body: JSON.stringify({ data: { ...record } }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(data => data.json())
+            .then(res => {
+                const itemToPaste = { ...record };
+                itemToPaste['id'] = res[0];
+                setRecords([...records, itemToPaste]);
+            })
     };
     return (
         <section className="">
@@ -82,7 +88,7 @@ export default function App() {
                 ) }
                 { mode === 'creating' && (
                     <section>
-                        <h2>Add a record</h2>
+                        <h2>Add new record into «{collection}»</h2>
                         <AddRecordForm
                             model={currentRecord}
                             onSetMode={setMode}
@@ -92,7 +98,7 @@ export default function App() {
                 )}
             </div>
             <div className="">
-                <h2>Records list</h2>
+                <h2>«{collection}»:</h2>
                 <RecordsTable records={records} onDeleteOne={deleteRecord} onEditOne={editRecord}/>
             </div>
         </section>
