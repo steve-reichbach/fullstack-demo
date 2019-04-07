@@ -1,5 +1,5 @@
 import React  from 'react'
-import { excludedForEditingFields } from '../../api'
+import { excludedForEditingFields } from '../../constants'
 
 const AddRecordForm = props => {
     const initialFormState = {...props.model};

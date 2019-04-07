@@ -1,5 +1,5 @@
 import {
-    COLLECTION_SET
+    COLLECTION_SET,
 } from '../actions/';
 
 const collection = (state = {}, action) => {

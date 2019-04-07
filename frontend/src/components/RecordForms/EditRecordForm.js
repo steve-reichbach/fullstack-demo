@@ -1,34 +1,68 @@
-import React, { useState } from 'react'
-import { excludedForEditingFields } from '../../api'
+import React, { useState, Component } from 'react'
+import { excludedForEditingFields, MODE_EDITING } from '../../constants'
+import { connect } from "react-redux";
+import { editRecord, setMode } from "../../redux/actions";
 
-const EditRecordForm = props => {
-    const [record, setRecord] = useState(props.record);
-
-    const handleInputChange = event => {
-        const { name, value } = event.target;
-        setRecord({ ...record, [name]: value })
-    };
-
-    return (
-        <form
-            onSubmit={e => { e.preventDefault(); props.onUpdateRecord(record.id, record);}}>
-            {
-                Object.entries(record).map(value => {
-                    if (excludedForEditingFields.includes(value[0])) { return null }
-                    return (<div key={value[0]}>
+class EditRecordForm extends Component {
+    constructor(props) {
+        super(props);
+        this.hideForm = this.hideForm.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+    hideForm () {
+        this.props.onHideForm();
+    }
+    updateRecord(id, resource) {
+        this.props.onUpdateRecord(id, resource)
+    }
+    handleInputChange(e) {
+        e.preventDefault();
+        console.log('handleInputChange', e.target.value);
+    }
+    render() {
+        return (
+            <form
+                onSubmit={ e => {
+                    e.preventDefault();
+                    this.updateRecord(this.props.recordToEdit.id, this.props.recordToEdit);
+                }}>
+                {
+                    Object.entries(this.props.records).map(value => {
+                        if (excludedForEditingFields.includes(value[0])) { return null }
+                        return (<div key={value[0]}>
                             <label>{value[0]}</label>
                             <input
                                 name={value[0]}
                                 value={value[1]}
-                                onChange={handleInputChange}
+                                onChange={this.handleInputChange}
                             />
                         </div>)
                     })
-            }
-            <button>Update record</button>
-            <button type="submit" onClick={() => props.onSetMode('')} className="">Cancel</button>
-        </form>
-    )
-};
+                }
+                <button>Update record</button>
+                <button type="submit" onClick={ e => {
+                    e.preventDefault();
+                    this.hideForm();
+                }} className="">Cancel</button>
+            </form>
+        )
+    }
+}
 
-export default EditRecordForm
+const mapStateToProps = state => ({
+    collection: state.collection,
+    records: state.records.list,
+    recordToEdit: state.records.current,
+    mode: state.mode
+});
+
+const mapDispatchToProps = dispatch => ({
+    onUpdateRecord: (id, record) => {
+        console.log("HELLO, IT's MEEEE", id, record);
+        dispatch(setMode(''));
+        // dispatch(editRecord(id));
+    },
+    onHideForm: () => dispatch(setMode('')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditRecordForm)

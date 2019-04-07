@@ -4,8 +4,17 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import { connect } from 'react-redux';
-import { setCollection } from '../../redux/actions';
-import { collectionsList } from '../../api';
+
+import {
+    setCollection,
+    setRecords
+} from '../../redux/actions';
+
+import {
+    getCollectionData
+} from '../../api';
+
+import { collectionsList } from '../../constants';
 
 class RecordsTabs extends React.Component {
     constructor(props) {
@@ -15,6 +24,7 @@ class RecordsTabs extends React.Component {
     }
     setCollection = (event, index) => {
         this.props.onSelectCollection(collectionsList[index]);
+        getCollectionData(collectionsList[index]).then(this.props.onGetCollectionData);
         this.value = index;
     };
 
@@ -41,6 +51,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onSelectCollection: name => dispatch(setCollection(name)),
+    onGetCollectionData: records => dispatch(setRecords(records))
 });
 
 export default connect(

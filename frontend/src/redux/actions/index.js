@@ -16,3 +16,18 @@ export const setMode = name => ({
     type: MODE_SET,
     payload: { name }
 });
+
+export const setRecords = records => ({
+    type: RECORDS_GET_ALL,
+    payload: { records }
+});
+
+export const editRecord = id => ({
+    type: RECORDS_UPDATE_ONE,
+    payload: { id }
+});
+
+export const deleteRecord = id => ({
+    type: RECORDS_DELETE_ONE,
+    payload: { id }
+});

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setMode } from '../../redux/actions';
 
 import Button from '@material-ui/core/Button';
+import { MODE_CREATING } from '../../constants';
 
 class AddRecordFormButton extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class AddRecordFormButton extends React.Component {
     }
 
     setMode() {
-        this.mode = this.mode === 'creating' ? 'editing' : 'creating';
+        this.mode = this.mode === MODE_CREATING ? '' : MODE_CREATING;
         this.props.onSetMode(this.mode);
     };
 
@@ -21,7 +22,7 @@ class AddRecordFormButton extends React.Component {
             variant="outlined"
             color="secondary"
             onClick={this.setMode}
-        > { this.props.mode === 'creating' ? '-' : '+' } </Button>)
+        > { this.props.mode === MODE_CREATING ? '-' : '+' } </Button>)
     }
 }
 
