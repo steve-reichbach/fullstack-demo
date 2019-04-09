@@ -27,6 +27,11 @@ export const editRecord = id => ({
     payload: { id }
 });
 
+export const addRecord = (record, collection)=> ({
+    type: RECORDS_CREATE_ONE,
+    payload: { record, collection }
+});
+
 export const deleteRecord = id => ({
     type: RECORDS_DELETE_ONE,
     payload: { id }

@@ -11,10 +11,10 @@ import {
 } from '../../redux/actions';
 
 import {
-    getCollectionData
+    apiGetCollectionData
 } from '../../api';
 
-import { collectionsList } from '../../constants';
+import { collectionsList } from '../../helpers/constants';
 
 class RecordsTabs extends React.Component {
     constructor(props) {
@@ -24,7 +24,9 @@ class RecordsTabs extends React.Component {
     }
     setCollection = (event, index) => {
         this.props.onSelectCollection(collectionsList[index]);
-        getCollectionData(collectionsList[index]).then(this.props.onGetCollectionData);
+
+        apiGetCollectionData(collectionsList[index])
+            .then(this.props.onGetCollectionData);
         this.value = index;
     };
 

@@ -23,8 +23,7 @@ class EntityRepository {
         return this.knex
             .insert({...entity})
             .returning('id')
-            .into(this.collectionName)
-            .catch(this.errorCatcher);
+            .into(this.collectionName);
     }
     updateOne(id, entity = { is_empty: true }) {
         if (!id || entity['is_empty']) {

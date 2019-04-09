@@ -1,51 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import RecordsTable from './components/RecordsTable/RecordsTable';
 import EditRecordsForm from './components/RecordForms/EditRecordForm';
 import AddRecordForm from './components/RecordForms/AddRecordForm';
 import AddRecordFormButton from './components/AddRecordFormButton/AddRecordFormButton';
-import RecordsTabs from "./components/RecordsTabs/RecordsTabs";
+import RecordsTabs from './components/RecordsTabs/RecordsTabs';
 
 import {
     MODE_EDITING,
     MODE_CREATING
-} from './constants';
+} from './helpers/constants';
 
 class App extends React.Component {
-    // const editRecord = id => {
-    //     setMode('editing');
-    //     console.log("editRecord", id, records.find(r => r.id === id));
-    //     setCurrentRecord({ ...records.find(r => r.id === id) })
-    // };
-
     render() {
+        const isCreating = this.props.mode === MODE_CREATING;
+        const isEditing = this.props.mode === MODE_EDITING;
+        const currentExists = Object.keys(this.props.currentRecord).length > 0;
+
         return <section className="">
             <div className="">
-                <AddRecordFormButton/>
-                <RecordsTabs/>
-                { this.props.mode === MODE_EDITING && (
-                <section>
-                    <h2>Edit a record</h2>
-                    <EditRecordsForm
-                        record={'currentRecord'}
-                        onSetMode={'setMode'}
-                        onUpdateRecord={'updateRecord'}/>
-                </section>
+                { currentExists && <AddRecordFormButton/> }
+                { isEditing && (
+                    <section>
+                        <h2>Edit a record</h2>
+                        <EditRecordsForm
+                            record={'currentRecord'}
+                            onSetMode={'setMode'}
+                            onUpdateRecord={'updateRecord'}/>
+                    </section>
                 ) }
-                { this.props.mode === MODE_CREATING && (
+                { isCreating && (
                     <section>
                         <h2>Add new record into «{ this.props.collection }»</h2>
-                        <AddRecordForm
-                            model={this.props.currentRecord}
-                            onSetMode={'setMode'}
-                            onAddRecord={'addRecord'}
-                        />
+                        <AddRecordForm model={this.props.currentRecord}/>
                     </section>
                 )}
+                <RecordsTabs/>
             </div>
             { this.props.collection &&  (
                 <div className="">
-                    <h2>«{this.props.collection}»:</h2>
+                    <h2>List of «{this.props.collection}»:</h2>
                     <RecordsTable/>
                 </div>)}
         </section>
@@ -54,7 +48,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
     collection: state.collection,
-    currentRecord: state.records.current, // Move it to add form
+    currentRecord: state.records.current,
     mode: state.mode
 });
 

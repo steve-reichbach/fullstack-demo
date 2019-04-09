@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setMode } from '../../redux/actions';
 
 import Button from '@material-ui/core/Button';
-import { MODE_CREATING } from '../../constants';
+import { MODE_CREATING } from '../../helpers/constants';
 
 class AddRecordFormButton extends React.Component {
     constructor(props) {

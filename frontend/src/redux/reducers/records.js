@@ -10,12 +10,20 @@ const records = (state = {}, action) => {
         case RECORDS_GET_ALL:
             return {
                 ...state,
-                list: action.payload.records
+                list: action.payload.records,
+                current: action.payload.records[0]
             };
         case RECORDS_DELETE_ONE:
             return {
                 ...state,
                 list: state.list.filter(r => r.id !== action.payload.id)
+            };
+        case RECORDS_CREATE_ONE:
+            console.log("RECORDS_CREATE_ONE OLOLO", state,);
+            return {
+                ...state,
+                mode: '',
+                list: [...state.list, { ...action.payload.record }]
             };
         /*
         case RESOURCES_LOAD:

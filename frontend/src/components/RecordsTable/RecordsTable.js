@@ -16,8 +16,8 @@ import {
     setMode
 } from '../../redux/actions';
 
-import { removeRecord } from '../../api';
-import { MODE_EDITING } from '../../constants';
+import { apiRemoveRecord } from '../../api';
+import { MODE_EDITING } from '../../helpers/constants';
 
 class RecordsTable extends React.Component {
     constructor(props) {
@@ -25,12 +25,8 @@ class RecordsTable extends React.Component {
         this.onEditRecord = this.props.onEditRecord.bind(this);
         this.onDeleteRecord = this.props.onDeleteRecord.bind(this);
     }
-    removeRecord(id) {
-        removeRecord(id, this.props.collection).then(data => {
-            // console.log(data);
-            // debugger;
-            this.onDeleteRecord(id);
-        })
+    deleteRecord(id) {
+        apiRemoveRecord(id, this.props.collection).then(this.onDeleteRecord(id));
     }
     render() {
         const columns = this.props.records && this.props.records[0] ? Object.keys(this.props.records[0]) : [];
@@ -51,7 +47,7 @@ class RecordsTable extends React.Component {
                                     <Button color="primary" onClick={() => { this.onEditRecord(row.id) } }>
                                         Edit
                                     </Button>
-                                    <Button color="secondary" onClick={() => { this.removeRecord(row.id) } }>
+                                    <Button color="secondary" onClick={() => { this.deleteRecord(row.id) } }>
                                         Delete
                                     </Button>
                                 </TableCell>
