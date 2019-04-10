@@ -53,7 +53,7 @@ class RecordForm extends Component {
     };
     render() {
         const { model, collection, mode } = this.props;
-        if (![MODE_CREATING, MODE_EDITING].includes(mode)) { return (<br/>) }
+        if (![MODE_CREATING, MODE_EDITING].includes(mode)) { return null }
         return (
             <section>
                 <h2>{ mode === MODE_CREATING ? 'Adding new record to ' : 'Editing record from' } «{collection}»</h2>

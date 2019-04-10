@@ -17,6 +17,7 @@ class AddRecordFormButton extends Component {
     };
 
     render() {
+        if (!this.props.collection) { return null }
         return ( <Button
             variant="outlined"
             color="secondary"
@@ -26,7 +27,8 @@ class AddRecordFormButton extends Component {
 }
 
 const mapStateToProps = state => ({
-    mode: state.mode
+    mode: state.mode,
+    collection: state.collection
 });
 
 const mapDispatchToProps = dispatch => ({
