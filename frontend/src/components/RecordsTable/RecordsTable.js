@@ -11,18 +11,19 @@ import TableCell from '@material-ui/core/TableCell';
 import { connect } from 'react-redux';
 
 import {
-    editRecord,
+    setForEdit,
     deleteRecord,
     setMode
 } from '../../redux/actions';
 
 import { apiRemoveRecord } from '../../api';
+import { smartTextEllipsis } from '../../helpers/lib';
 import { MODE_EDITING } from '../../helpers/constants';
 
 class RecordsTable extends React.Component {
     constructor(props) {
         super(props);
-        this.onEditRecord = this.props.onEditRecord.bind(this);
+        this.onSetForEditRecord = this.props.onSetForEditRecord.bind(this);
         this.onDeleteRecord = this.props.onDeleteRecord.bind(this);
     }
     deleteRecord(id) {
@@ -32,26 +33,33 @@ class RecordsTable extends React.Component {
         const columns = this.props.records && this.props.records[0] ? Object.keys(this.props.records[0]) : [];
         const records = this.props.records;
         return (
-            <Paper className='root'>
-                <Table className='table'>
+            <Paper>
+                <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>actions</TableCell>
                             { columns.map(name => <TableCell key={name}>{name}</TableCell>) }
+                            <TableCell>actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         { records.map(row => (
                             <TableRow key={row.id}>
+                                {
+                                    columns.map(field => {
+
+                                        return <TableCell title={row[field]} key={`${row.id }-${field}`}>{
+                                            smartTextEllipsis(row[field], 30)
+                                        }</TableCell>
+                                    })
+                                }
                                 <TableCell>
-                                    <Button color="primary" onClick={() => { this.onEditRecord(row.id) } }>
+                                    <Button color="primary" onClick={() => { this.onSetForEditRecord(row.id) } }>
                                         Edit
                                     </Button>
                                     <Button color="secondary" onClick={() => { this.deleteRecord(row.id) } }>
                                         Delete
                                     </Button>
                                 </TableCell>
-                                { columns.map(field => <TableCell key={`${row.id }-${field}`}>{row[field]}</TableCell>) }
                             </TableRow>
                             )) }
                     </TableBody>
@@ -68,9 +76,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onEditRecord: id => {
+    onSetForEditRecord: id => {
         dispatch(setMode(MODE_EDITING));
-        dispatch(editRecord(id));
+        dispatch(setForEdit(id));
     },
     onDeleteRecord: id => {
         dispatch(setMode(''));

@@ -6,6 +6,7 @@ export const RECORDS_GET_ALL = 'RECORDS:GET_ALL';
 export const RECORDS_CREATE_ONE = 'RECORDS:CREATE:ONE';
 export const RECORDS_UPDATE_ONE = 'RECORDS:UPDATE:ONE';
 export const RECORDS_DELETE_ONE = 'RECORDS:REMOVE:ONE';
+export const RECORDS_SET_FOR_UPDATE_ONE = 'RECORDS:SET:FOR:UPDATE:ONE';
 
 export const setCollection = name => ({
     type: COLLECTION_SET,
@@ -22,9 +23,14 @@ export const setRecords = records => ({
     payload: { records }
 });
 
-export const editRecord = id => ({
-    type: RECORDS_UPDATE_ONE,
+export const setForEdit = id => ({
+    type: RECORDS_SET_FOR_UPDATE_ONE,
     payload: { id }
+});
+
+export const updateRecord = (id, record) => ({
+    type: RECORDS_UPDATE_ONE,
+    payload: { id, record }
 });
 
 export const addRecord = (record, collection)=> ({

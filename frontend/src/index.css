@@ -17,3 +17,7 @@ code {
 {
   display: inline-block
 }
+.validationError
+{
+  color: #f00;
+}

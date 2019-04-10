@@ -1,11 +1,13 @@
+const API_PATH = 'http://localhost:3001/api';
+
 export const apiGetCollectionData = collection => {
-    return fetch(`http://localhost:3001/api/${collection}`)
+    return fetch(`${API_PATH}/${collection}`)
         .then(errorHandler)
         .then(data => data.json())
 };
 
 export const apiCreateRecord = (record, collection) => {
-    return fetch(`http://localhost:3001/api/${collection}/`,
+    return fetch(`${API_PATH}/${collection}/`,
         {
                 method: 'POST',
                 body: JSON.stringify({ data: { ...record } }),
@@ -16,26 +18,20 @@ export const apiCreateRecord = (record, collection) => {
 };
 
 export const apiRemoveRecord = (id, collection) => {
-    return fetch(`http://localhost:3001/api/${collection}/delete/${id}`,
+    return fetch(`${API_PATH}/${collection}/delete/${id}`,
         { method: 'DELETE' })
             .then(errorHandler);
 };
 
 export const apiUpdateRecord = (id, updatedRecord, collection) => {
-    let query = { ...updatedRecord };
-    delete query['date_created']; // TODO: nee a date_created format fix
-
-    return fetch(`http://localhost:3001/api/${collection}/update/${id}`,
+    return fetch(`${API_PATH}/${collection}/update/${id}`,
         {
             method: 'PUT',
-            body: JSON.stringify({ data: { ...query } }),
+            body: JSON.stringify({ data: { ...updatedRecord } }),
             headers: { 'Content-Type': 'application/json' }
         })
         .then(errorHandler)
-        .then(res => {
-                //setRecords(records.map(row => (row.id === id ? updatedRecord : row)))
-            return res.json();
-        });
+        .then(res => res.json());
 };
 
 const errorHandler = (res) => {

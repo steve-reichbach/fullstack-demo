@@ -8,13 +8,12 @@ import { MODE_CREATING } from '../../helpers/constants';
 class AddRecordFormButton extends React.Component {
     constructor(props) {
         super(props);
-        this.mode = props.mode;
         this.setMode = this.setMode.bind(this);
     }
 
     setMode() {
-        this.mode = this.mode === MODE_CREATING ? '' : MODE_CREATING;
-        this.props.onSetMode(this.mode);
+        const { onSetMode, mode } = this.props;
+        onSetMode(mode === MODE_CREATING ? '' : MODE_CREATING);
     };
 
     render() {

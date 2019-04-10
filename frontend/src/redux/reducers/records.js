@@ -3,6 +3,7 @@ import {
     RECORDS_CREATE_ONE,
     RECORDS_UPDATE_ONE,
     RECORDS_DELETE_ONE,
+    RECORDS_SET_FOR_UPDATE_ONE
 } from '../actions/';
 
 const records = (state = {}, action) => {
@@ -19,21 +20,28 @@ const records = (state = {}, action) => {
                 list: state.list.filter(r => r.id !== action.payload.id)
             };
         case RECORDS_CREATE_ONE:
-            console.log("RECORDS_CREATE_ONE OLOLO", state,);
             return {
                 ...state,
                 mode: '',
                 list: [...state.list, { ...action.payload.record }]
             };
-        /*
-        case RESOURCES_LOAD:
-            result = {
-                ...state,
-                resources: action.payload.resources,
-                filteredResources: action.payload.resources,
+        case RECORDS_SET_FOR_UPDATE_ONE:
+            console.log("RECORDS_SET_FOR_UPDATE_ONE", action.payload);
+            return {
+                list: [...state.list],
+                current: state.list.find(r => r.id === action.payload.id)
             };
-            return result;
-            */
+        case RECORDS_UPDATE_ONE:
+            console.warn("RECORDS_UPDATE_ONE OLOLO", state, action.payload);
+            return {
+                ...state,
+                mode: '',
+                list: state.list.map(r => {
+                    if (r.id === action.payload.id) {
+                        return action.payload.record
+                    } else return r;
+                })
+            };
         default:
             return state
     }

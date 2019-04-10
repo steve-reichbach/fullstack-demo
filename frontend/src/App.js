@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RecordsTable from './components/RecordsTable/RecordsTable';
-import EditRecordsForm from './components/RecordForms/EditRecordForm';
-import AddRecordForm from './components/RecordForms/AddRecordForm';
+import RecordForm from './components/RecordForms/RecordForm';
 import AddRecordFormButton from './components/AddRecordFormButton/AddRecordFormButton';
 import RecordsTabs from './components/RecordsTabs/RecordsTabs';
 
@@ -13,35 +12,21 @@ import {
 
 class App extends React.Component {
     render() {
-        const isCreating = this.props.mode === MODE_CREATING;
-        const isEditing = this.props.mode === MODE_EDITING;
-        const currentExists = Object.keys(this.props.currentRecord).length > 0;
+        const { mode, collection, currentRecord } = this.props;
+        const isCreating = mode === MODE_CREATING;
+        const isEditing = mode === MODE_EDITING;
 
-        return <section className="">
-            <div className="">
-                { currentExists && <AddRecordFormButton/> }
-                { isEditing && (
-                    <section>
-                        <h2>Edit a record</h2>
-                        <EditRecordsForm
-                            record={'currentRecord'}
-                            onSetMode={'setMode'}
-                            onUpdateRecord={'updateRecord'}/>
-                    </section>
-                ) }
-                { isCreating && (
-                    <section>
-                        <h2>Add new record into «{ this.props.collection }»</h2>
-                        <AddRecordForm model={this.props.currentRecord}/>
-                    </section>
-                )}
+        return <section>
+            <div>
+                { Object.keys(currentRecord).length > 0 && <AddRecordFormButton/> }
+                { (isCreating || isEditing) && <RecordForm/> }
                 <RecordsTabs/>
             </div>
-            { this.props.collection &&  (
-                <div className="">
-                    <h2>List of «{this.props.collection}»:</h2>
+            { collection &&
+                <div>
+                    <h2>List of «{collection}»:</h2>
                     <RecordsTable/>
-                </div>)}
+                </div> }
         </section>
     };
 }
