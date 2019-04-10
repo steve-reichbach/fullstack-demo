@@ -26,3 +26,6 @@ yarn-error.log*
 .idea
 /task
 redux-form
+package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
