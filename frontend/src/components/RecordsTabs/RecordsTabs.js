@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -16,7 +16,7 @@ import {
 
 import { collectionsList } from '../../helpers/constants';
 
-class RecordsTabs extends React.Component {
+class RecordsTabs extends Component {
     constructor(props) {
         super(props);
         this.value = 0;

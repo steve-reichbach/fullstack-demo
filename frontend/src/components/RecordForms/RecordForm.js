@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Button from '@material-ui/core/Button';
@@ -19,7 +19,7 @@ import {
 
 import {apiCreateRecord, apiUpdateRecord} from '../../api';
 
-class RecordForm extends React.Component {
+class RecordForm extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,6 +53,7 @@ class RecordForm extends React.Component {
     };
     render() {
         const { model, collection, mode } = this.props;
+        if (![MODE_CREATING, MODE_EDITING].includes(mode)) { return (<br/>) }
         return (
             <section>
                 <h2>{ mode === MODE_CREATING ? 'Adding new record to ' : 'Editing record from' } «{collection}»</h2>

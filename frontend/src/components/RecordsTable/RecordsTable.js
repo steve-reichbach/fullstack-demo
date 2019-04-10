@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React  from 'react';
+import React, { Component }  from 'react';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -20,7 +20,7 @@ import { apiRemoveRecord } from '../../api';
 import { smartTextEllipsis } from '../../helpers/lib';
 import { MODE_EDITING } from '../../helpers/constants';
 
-class RecordsTable extends React.Component {
+class RecordsTable extends Component {
     constructor(props) {
         super(props);
         this.onSetForEditRecord = this.props.onSetForEditRecord.bind(this);
@@ -30,41 +30,45 @@ class RecordsTable extends React.Component {
         apiRemoveRecord(id, this.props.collection).then(this.onDeleteRecord(id));
     }
     render() {
-        const columns = this.props.records && this.props.records[0] ? Object.keys(this.props.records[0]) : [];
-        const records = this.props.records;
+        const { records, collection } = this.props;
+        if (!records.length) { return null }
+        const columns = records && records[0] ? Object.keys(records[0]) : [];
         return (
-            <Paper>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            { columns.map(name => <TableCell key={name}>{name}</TableCell>) }
-                            <TableCell>actions</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        { records.map(row => (
-                            <TableRow key={row.id}>
-                                {
-                                    columns.map(field => {
-
-                                        return <TableCell title={row[field]} key={`${row.id }-${field}`}>{
-                                            smartTextEllipsis(row[field], 30)
-                                        }</TableCell>
-                                    })
-                                }
-                                <TableCell>
-                                    <Button color="primary" onClick={() => { this.onSetForEditRecord(row.id) } }>
-                                        Edit
-                                    </Button>
-                                    <Button color="secondary" onClick={() => { this.deleteRecord(row.id) } }>
-                                        Delete
-                                    </Button>
-                                </TableCell>
+            <div>
+                <h2>List of «{collection}»:</h2>
+                <Paper>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                { columns.map(name => <TableCell key={name}>{name}</TableCell>) }
+                                <TableCell>actions</TableCell>
                             </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            { records.map(row => (
+                                <TableRow key={row.id}>
+                                    {
+                                        columns.map((field, i) => {
+
+                                            return <TableCell title={row[field]} key={`${field}-${i}`}>{
+                                                smartTextEllipsis(row[field], 30)
+                                            }</TableCell>
+                                        })
+                                    }
+                                    <TableCell>
+                                        <Button color="primary" onClick={() => { this.onSetForEditRecord(row.id) } }>
+                                            Edit
+                                        </Button>
+                                        <Button color="secondary" onClick={() => { this.deleteRecord(row.id) } }>
+                                            Delete
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
                             )) }
-                    </TableBody>
-                </Table>
-            </Paper>
+                        </TableBody>
+                    </Table>
+                </Paper>
+            </div>
         )
     }
 }

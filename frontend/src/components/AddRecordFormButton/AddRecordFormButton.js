@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setMode } from '../../redux/actions';
 
 import Button from '@material-ui/core/Button';
 import { MODE_CREATING } from '../../helpers/constants';
 
-class AddRecordFormButton extends React.Component {
+class AddRecordFormButton extends Component {
     constructor(props) {
         super(props);
         this.setMode = this.setMode.bind(this);
