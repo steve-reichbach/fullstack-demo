@@ -40,7 +40,6 @@ class RecordForm extends Component {
         });
 
         if (mode === MODE_EDITING) {
-            debugger;
             onUpdateRecord(model['id'], value, collection);
             onHideForm();
         } else {
@@ -63,7 +62,7 @@ class RecordForm extends Component {
                     validate={validationHook}
                     onSubmit={(values, {setSubmitting}) => this.handleSubmit(values, setSubmitting, mode)}
                 >
-                    {({isSubmitting}) => (
+                    {() => (
                         <Form>
                             {
                                 Object.entries(model).map(row => {
