@@ -1,0 +1,61 @@
+id;name;date_created;description;active;continue_on_click;language;hide_timer;timer_location;skip_button_location;hide_all_ui;hide_play_button;hide_skip_button;fraud;brand_safety;network_id;ad_tag_url;width;height;duration;whitelist_keywords;serve_on_unmeasurable;is_branded;private_brand_safety
+174;"テスト VAST";"2018-03-06 22:17:12";テスト;0;0;JP;0;middle;bottom_middle;0;0;0;0;1;40;http://www.asahi.com;300;250;15;NULL;1;1;1
+178;"SAMPLE - DO NOT TOUCH!";"2018-03-13 13:10:10";"ALways live vast for testing";0;0;EN;0;bottom;top_right;0;0;0;1;1;98;https://video.combotag.com/17.xml;300;250;6;NULL;1;1;1
+179;PG12313;"2018-03-14 08:22:02";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;59;http://www.vast.com;300;250;15;NULL;1;1;1
+180;Mazda-Campaign1;"2018-03-14 08:31:33";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;59;http://www.mazdavast.com;300;250;15;NULL;1;1;1
+181;"Test_created by NetManager";"2018-03-14 16:25:32";;0;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://video.combotag.com/17.xml;300;250;0;NULL;1;1;0
+184;Pg1wefnwef;"2018-03-15 14:43:02";;1;1;EN;1;bottom;middle_right;0;1;0;1;1;59;http://www.vast.com;300;250;0;NULL;1;1;1
+189;test-Fraud&BrandSafety;"2018-03-18 15:24:23";;0;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://v.combotag.com/17.xml;300;250;0;NULL;1;1;1
+190;testtag;"2018-03-19 10:06:01";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;103;https://video.combotag.com/17.xml;300;250;0;NULL;1;1;1
+191;219377205;"2018-04-18 21:09:01";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377205;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+192;219377208;"2018-04-18 21:09:02";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377208;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+193;219377211;"2018-04-18 21:09:03";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377211;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+194;219377214;"2018-04-18 21:09:04";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377214;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+195;219377217;"2018-04-18 21:09:05";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377217;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+196;219377223;"2018-04-18 21:09:06";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377223;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+197;219377229;"2018-04-18 21:09:07";NULL;1;1;EN;0;bottom;middle_right;0;0;1;1;1;122;"https://ad.doubleclick.net/ddm/pfadx/N5926.288332ACCUEN/B21036216.219377229;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;dcmt=text/xml";300;250;15;NULL;1;1;1
+214;testfraud&brandsafety;"2018-04-26 12:00:42";"testing with BS & FP";1;0;EN;0;bottom;middle_right;1;0;0;1;1;98;https://v.combotag.com/17.xml;640;480;0;NULL;1;1;1
+215;"29.4 - test secure";"2018-04-29 10:20:17";;1;0;EN;0;bottom;middle_right;1;0;0;1;1;98;https://v.combotag.com/17.xml;300;250;0;NULL;1;1;1
+216;"URL- JW TAG wrapped";"2018-04-29 15:10:41";"URL referrer macro test";1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+219;"URL creative test - DBM";"2018-04-30 06:33:14";;1;0;EN;0;bottom;middle_right;1;0;0;1;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+222;"test imps count";"2018-05-09 09:21:26";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://v.combotag.com/17.xml;300;250;0;NULL;1;1;1
+223;"Impression Counter test";"2018-05-09 11:04:31";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+225;shak_v2l;"2018-05-14 10:41:20";;1;0;EN;0;bottom;middle_right;0;0;0;0;0;98;https://www.adonating.biz/vid/v2l.xml;300;250;63;NULL;1;1;0
+226;shak_v2n;"2018-05-14 11:02:10";FGBFDG;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://www.adonating.biz/vid/v2n.xml;300;250;0;NULL;1;1;1
+227;Testing30secVASTtag;"2018-05-15 07:13:52";;1;1;EN;1;bottom;middle_right;0;1;1;1;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+230;ramiasfd;"2018-05-16 11:09:18";;1;0;EN;0;middle;top_left;1;0;0;1;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+231;shak_v3l;"2018-05-17 09:06:54";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://www.adonating.biz/vid/v3l.xml;300;250;0;NULL;1;1;1
+233;shak_testJP;"2018-05-17 09:44:07";;1;0;JP;0;bottom;middle_right;0;0;0;0;1;98;https://video.combotag.com/17.xml;300;250;20;NULL;1;1;1
+235;TestReportingV3L;"2018-05-27 12:52:57";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;98;https://www.adonating.biz/vid/v3l.xml;300;250;0;NULL;1;1;1
+236;TestReportingV2L;"2018-05-27 12:57:53";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;98;https://www.adonating.biz/vid/v2l.xml;300;250;0;NULL;1;1;1
+242;shak_JW;"2018-06-18 13:08:45";;0;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+243;RAMITEST;"2018-06-18 13:19:09";;0;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+244;kkkkkak_rami_testsak_rami_testshakllllllllll1;"2018-06-18 13:53:19";;1;0;JP;0;top;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;30;NULL;1;1;1
+245;MediaMath;"2018-06-24 15:47:48";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;640;360;0;NULL;1;1;1
+246;TEST_VAST;"2018-06-25 07:06:33";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;300;250;0;NULL;1;1;1
+247;videoDBMtest;"2018-06-26 08:47:47";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;640;360;3;NULL;1;1;1
+248;videoDBMmexico;"2018-06-26 12:35:46";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;98;https://playertest.longtailvideo.com/vast-30s-ad.xml;640;360;3;NULL;1;1;1
+249;MM_Test;"2018-06-28 06:19:53";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://www.adonating.biz/vid/v2l.xml;300;250;15;NULL;1;1;1
+250;MM_test2;"2018-06-28 06:55:16";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;98;https://v.combotag.com/17.xml;640;480;241;NULL;1;1;1
+252;M_CAR_Fabreeze_prerollvid;"2018-06-28 18:20:53";;1;0;JP;0;top;bottom_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25402381&PluID=0&pos=3040&ord=[RANDOM_NUMBER]&cim=1;640;480;40;NULL;1;1;1
+254;"2 Fabreze";"2018-07-06 10:52:08";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490269&PluID=0&pos=347&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+255;"3 Fabreze";"2018-07-06 10:53:04";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490270&PluID=0&pos=2299&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+256;"4 Fabreze";"2018-07-06 10:54:06";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490280&PluID=0&pos=7838&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+257;"5 Fabreze";"2018-07-06 10:55:41";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490281&PluID=0&pos=3379&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+258;1Fabreze;"2018-07-06 11:39:15";;1;1;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490268&PluID=0&pos=4807&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+265;fdsgvwsdfagfvwefrsdgvwsdfdsgvwsdfagfvwefrsd;"2018-07-16 07:35:52";;0;0;JP;0;bottom;middle_right;0;0;0;1;1;82;https://v.combotag.com/17.xml;640;480;35;NULL;1;1;1
+266;testOnNamesThatAreTooLong11111111111111111;"2018-07-22 09:23:57";;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://v.combotag.com/17.xml;300;250;15;NULL;1;1;1
+267;11111testPermission;"2018-07-25 10:54:59";asdfadsf;1;0;EN;0;bottom;middle_right;0;0;0;0;1;98;https://v.combotag.com/17.xml;300;250;0;NULL;1;1;1
+269;"11 Fabreze";"2018-07-31 07:09:06";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25772246&PluID=0&pos=8916&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+270;"12 Fabreze";"2018-07-31 07:10:15";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25772247&PluID=0&pos=3062&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+271;"13 Fabreze";"2018-07-31 07:10:45";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25772248&PluID=0&pos=1982&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+272;"14 Fabreze";"2018-07-31 07:11:16";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25772249&PluID=0&pos=902&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+273;"15 Fabreze";"2018-07-31 07:13:31";;1;0;JP;0;bottom;middle_right;0;0;0;1;1;130;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25772250&PluID=0&pos=5918&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+274;InApp_Video_Test_DBM;"2018-07-31 09:16:05";;1;0;EN;0;bottom;middle_right;0;0;0;1;1;98;NULL;300;250;18;NULL;1;1;1
+308;Test_PNG_TAG_UI;"2018-08-27 16:29:35";;1;0;JP;0;bottom;middle_right;1;0;0;0;1;98;https://bs.serving-sys.com/Serving?cn=display&c=23&pl=VAST&pli=25490269&PluID=0&pos=347&ord=[timestamp]&cim=1&dspu=$$%%TTD_TDID%%$$;640;480;18;NULL;1;1;1
+311;en_coc;"2018-08-28 09:54:34";;1;1;EN;0;bottom;middle_right;0;0;0;1;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
+313;en_hidetimer;"2018-08-28 15:13:39";;1;0;EN;1;bottom;middle_right;0;0;0;0;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
+314;en_hideplay;"2018-08-28 15:14:52";;1;0;EN;0;bottom;middle_right;0;1;0;0;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
+315;en_hideskip;"2018-08-28 15:20:30";;1;0;EN;0;bottom;middle_right;0;0;1;0;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
+316;jp_viewall;"2018-08-28 15:22:58";;1;0;JP;0;bottom;middle_right;0;0;0;0;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
+317;jp_hideui;"2018-08-28 15:26:26";;1;0;EN;0;bottom;middle_right;1;0;0;0;1;82;https://www.adonating.biz/vid/v2l.xml;300;250;23;NULL;1;1;1
